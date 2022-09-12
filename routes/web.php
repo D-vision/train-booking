@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/','home')->name('app')->middleware(['auth']);
+Route::view('login','login')->name('login')->middleware(['guest']);

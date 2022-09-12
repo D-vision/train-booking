@@ -12,6 +12,15 @@ window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
+
+if(csrfToken)
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken.content;
+
+
+import Vue from 'vue'
+window.Vue = Vue
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
