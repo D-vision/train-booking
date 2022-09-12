@@ -18,8 +18,9 @@ if(csrfToken)
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken.content;
 
 
-import Vue from 'vue'
+import Vue from 'vue/dist/vue'
 window.Vue = Vue
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

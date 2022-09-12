@@ -2,6 +2,6 @@
 @section('content')
 <div class="modal">
     <h1>Login or register</h1>
-    <login></login>
+    <login>damn</login>
 </div>
 @endsection

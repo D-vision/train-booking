@@ -55,6 +55,6 @@ class User extends Authenticatable
 
     public function order($data)
     {
-        
+
     }
 }

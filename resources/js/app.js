@@ -1,10 +1,11 @@
 import './bootstrap';
-
-const files = require.context('./pages', true, /\.vue$/i)
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0],
-    files(key).default)
-)
+import login from './pages/login'
+import home from './pages/home'
 
 window.app = new Vue({
-    el:'#app'
+    el:'#app',
+    components: {login, home},
+    data:{
+
+    }
 })
