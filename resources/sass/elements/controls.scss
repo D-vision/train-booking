@@ -1,0 +1,121 @@
+input{
+    &.xl{
+        font-size: 2rem;
+   }
+}
+
+.control{
+    display: block;
+    margin: 12px 0;
+    width: 100%;
+    position: relative;
+
+    & > span{
+        padding-top: 20px;
+        width: 100%;
+        display: inline-block;
+    }
+
+    & > .btn{
+        padding: 5px 12px !important;
+        margin: 5px 0 !important;
+
+        &.underline, &.tertiary{
+            padding: 5px 0 !important;
+        }
+    }
+
+    input, select, .control-body{
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #D3D8DD;
+        color: $text-color;
+        background: transparent;
+        font-size: 13px;
+        padding: 28px 0 8px 0;
+
+        option[disabled]{
+            color: $text-muted;
+        }
+
+        &:focus{
+            outline: none;
+            border-bottom: 1px solid $color-primary;
+        }
+    }
+
+
+    label{
+        display:block;
+        color: $text-muted;
+        position: absolute;
+        //margin-top:-50px;
+        top:0;
+        font-size: 11px;
+    }
+
+    input:focus + label, select:focus + label {
+        color: $color-primary;
+    }
+}
+
+
+
+.inline-input{
+    border: none;
+
+    &:focus{
+        //border-bottom: 1px solid #4c4c4c;
+        outline: none;
+    }
+
+}
+
+.input-composer{
+    display: flex;
+    align-items: center;
+    margin: 15px 5px;
+    border: 1px solid lighten($color-dark,40%);
+    border-radius: 4px;
+    background: #ffffff;
+
+    &.primary{
+        border-color: lighten($color-primary,10%);
+    }
+    &.warning{
+        border-color: lighten($color-warning,10%);
+    }
+    &.danger{
+        border-color: lighten($color-danger,10%);
+    }
+    &.success{
+        border-color: lighten($color-success,10%);
+    }
+
+    .main{
+        flex-grow: 1;
+    }
+
+    .additional{
+
+    }
+
+    &.embedded{
+        border: none;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    input, select{
+        flex-grow: 1;
+        padding: 8px;
+        border: none;
+        background: transparent;
+
+        &:focus{
+            border: none;
+            outline: none;
+        }
+    }
+}
+

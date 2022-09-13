@@ -1,0 +1,224 @@
+@mixin el-hover($color) {
+    background-color: lighten($color, 24%);
+    border-color: lighten($color, 24%);
+    color: lighten($color, 24%);
+}
+
+@mixin el-pressed($color) {
+    background-color: darken($color, 24%);
+    border-color: darken($color, 24%);
+    color: darken($color, 24%);
+}
+
+@mixin el-disabled($color) {
+    background-color: $color-disabled;
+    border-color: $color-disabled;
+    color: $color-disabled;
+    box-shadow: none;
+    cursor: default;
+}
+
+@mixin button-default($color) {
+    color: $text-color-invert;
+    background: $color;
+    border: 1px solid $color;
+    box-shadow: 0 4px 10px adjust-color($color, $alpha:-0.24);
+
+    &:hover {
+        @include el-hover($color);
+        color: $text-color-invert;
+        box-shadow: 0 4px 10px lighten($color, 48%);
+    }
+
+    &:active {
+        @include el-pressed($color);
+        color: $text-color-invert;
+        box-shadow: 0 4px 10px darken($color, 24%);
+    }
+
+    &.disabled {
+        @include el-disabled($color);
+        color: $text-color-invert;
+    }
+
+    &.pressed{}
+    &.processing{}
+    &.done{}
+    &.failed{}
+}
+
+@mixin button-outline($color) {
+    color: $color;
+    background: transparent;
+    border: 1px solid $color;
+    box-shadow: none;
+
+    &:hover {
+        @include el-hover($color);
+        background: transparent;
+    }
+
+    &:active {
+        @include el-pressed($color);
+        background: transparent;
+    }
+
+    &.disabled {
+        @include el-disabled($color);
+        background: transparent;
+    }
+}
+
+@mixin button-underline($color) {
+    color: $color;
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px dashed $color;
+    box-shadow: none;
+
+    &:hover {
+        @include el-hover($color);
+        background: transparent;
+    }
+
+    &:active {
+        @include el-pressed($color);
+        background: transparent;
+    }
+
+    &.disabled {
+        @include el-disabled($color);
+        background: transparent;
+    }
+}
+
+@mixin button-tertiary($color) {
+    color: $color;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    //border-bottom: 1px dashed $color;
+    border-radius: 0;
+    //padding: 0 5px;
+
+    &:hover {
+        @include el-hover($color);
+        background: transparent;
+    }
+
+    &:active {
+        @include el-pressed($color);
+        background: transparent;
+    }
+
+    &.disabled {
+        @include el-disabled($color);
+        background: transparent;
+    }
+}
+
+@mixin button-states($color){
+    @include button-default($color);
+
+    &.outline{
+        @include button-outline($color);
+    }
+
+    &.underline{
+        @include button-underline($color);
+    }
+
+    &.tertiary{
+        @include button-tertiary($color);
+    }
+}
+
+
+.btn, .label {
+    padding: 12px;
+    margin: 5px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: $text-color-invert;
+    text-align: center;
+    cursor: pointer;
+    display: inline-grid;
+    align-content: center;
+    white-space: nowrap;
+    grid-auto-flow: column;
+    grid-gap: 5px;
+
+    &.label{
+        cursor: default;
+    }
+
+    &.bookmark{
+        padding: 0;
+        margin-top: 0;
+    }
+
+    &.full {
+        display: block;
+        width: auto;
+    }
+
+    &.lg {
+        padding: 3px 5px;
+        font-size: 1.1rem;
+    }
+
+    &.xs {
+        padding: 3px 5px;
+        font-size: 0.7rem;
+    }
+
+    &.sm {
+        padding: 3px 0;
+        font-size: 14px;
+    }
+
+    &.dark {
+        @include button-states($color-dark);
+    }
+    &.warning {
+        @include button-states($color-warning);
+    }
+    &.danger {
+        @include button-states($color-danger);
+    }
+    &.pink{
+        @include button-states($pink);
+    }
+    &.purple{
+        @include button-states($purple);
+    }
+    &.primary {
+        @include button-states($color-primary);
+    }
+    &.cyan{
+        @include button-states($cyan);
+    }
+    &.teal{
+        @include button-states($teal);
+    }
+    &.success {
+        @include button-states($color-success);
+    }
+
+
+
+
+    &.cancel {
+    }
+
+    &.close {
+        //color: #ffffff;
+        //background: #3d4852;
+        //font-size: 2em;
+        display: inline-block;
+    }
+
+}
+
+

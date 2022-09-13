@@ -1,0 +1,41 @@
+
+// Body
+$body-bg: #EEF2F7;
+
+// Typography
+//$fa-font-path: "../fonts";
+$font-family-sans-serif: "Nunito", sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #3F5DE7;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66D9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+$color-primary: $blue;
+$color-success: $green;
+$color-danger: $red;
+$color-warning:$orange;
+$color-disabled:adjust-color(#101114,$alpha:0.3);
+$color-dark:#3d4852;
+$color-grey: $body-bg;
+
+$text-color: #000000;
+$text-color-invert: invert($text-color);
+$text-muted: lighten($text-color,50%);
+
+$active-background: #ECEFFF;
+$block-bg:#fff;
+
+$header-text-color:$color-dark;
+$header-bg: $block-bg;
+
+

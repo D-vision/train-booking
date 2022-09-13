@@ -1,0 +1,12 @@
+.bigscreen{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+    .card{
+        display: flex;
+        flex-direction: column;
+        max-width: 1200px;
+    }
+}

@@ -30,12 +30,15 @@ class TrainsDemoApi
 
     protected function handleResponse($req)
     {
+        // if code 403 - refresh token
+
         return $req;
     }
 
     public function getToken()
     {
-
+        $this->post('');
+        // if login failed throw notification
     }
 
     public function search($data)

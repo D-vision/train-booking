@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/','home')->name('app')->middleware(['auth']);
 Route::view('login','login')->name('login')->middleware(['guest']);
+Route::view('register','register')->name('register')->middleware(['guest']);
+
+
+Route::post('login',[UserController::class,'login'])->middleware(['throttle:login']);
+Route::post('register',[UserController::class,'register']);
+
+Route::post('logout',[UserController::class,'logout'])
+    ->middleware(['auth'])
+    ->name('logout');

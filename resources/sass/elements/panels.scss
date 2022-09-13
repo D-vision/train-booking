@@ -1,0 +1,67 @@
+@mixin color-variation($color,$al:1){
+    background: adjust-color($color,$alpha:-0.5);
+    border-color:adjust-color($color,$alpha:$al);
+}
+
+@mixin colorsMap($alpha:1){
+
+    &.primary {
+        @include color-variation($color-primary,$alpha);
+    }
+
+    &.dark {
+        @include color-variation($color-dark,$alpha);
+    }
+
+    &.grey {
+        @include color-variation(lighten($color-dark,40%),$alpha);
+    }
+
+    &.success {
+        @include color-variation($color-success,$alpha);
+    }
+
+    &.danger {
+        @include color-variation($color-danger,$alpha);
+    }
+
+    &.warning {
+        @include color-variation($color-warning,$alpha);
+    }
+}
+
+.panel{
+    border-radius: 9px;
+    padding: 20px;
+    margin: 5px;
+
+
+    @include colorsMap();
+
+    &.outline{
+        background: transparent;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    &.shadow{
+        box-shadow: -3px 0 10px lighten($header-bg,40%);
+    }
+
+    &.white-pad{
+        background: #fff;
+    }
+
+    &.dotted, &.dashed{
+        @include colorsMap(-0.5);
+        background: transparent !important;
+        border-style: dashed;
+        border-width: 2px;
+    }
+
+    &.alert{
+        border-style: solid;
+        border-width: 1px;
+    }
+
+}

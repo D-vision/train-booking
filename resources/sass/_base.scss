@@ -1,0 +1,93 @@
+html, body {
+    height: 100%;
+    margin: 0;padding: 0;
+    background: $body-bg;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #303035;
+    min-height: 100vh;
+}
+
+figure {
+    position: relative;
+}
+
+.logo-svg{
+    .name{
+        display: none;
+    }
+}
+
+
+.center{
+    text-align: center;
+}
+
+.no-wrap{
+    white-space: nowrap;
+}
+
+.text-muted{ color: $text-muted }
+.text-dark{ color: $color-dark }
+.text-warning{ color: $color-warning }
+.text-danger{ color: $color-danger }
+.text-pink{ color: $pink }
+.text-purple{ color: $purple }
+.text-primary{ color: $color-primary }
+.text-cyan{ color: $cyan }
+.text-teal{ color: $teal }
+.text-success{ color: $color-success }
+.text-disabled{ color: $color-disabled }
+.text-white{ color: #ffffff }
+
+.text-bold{ font-weight: bold }
+.text-xs{ font-size: 0.7rem }
+
+.golder-icon{
+    background: #FFD100;
+    background: -webkit-linear-gradient(to bottom, #FFD100 0%, #FC8002 100%);
+    background: -moz-linear-gradient(to bottom, #FFD100 0%, #FC8002 100%);
+    background: linear-gradient(to bottom, #FFD100 0%, #FC8002 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 24px;
+}
+
+.sticky-left{
+    position: sticky;
+    left:0;
+    max-width: 100vw;
+}
+.sticky-right{
+    position: sticky;
+    right:0;
+    max-width: 100vw;
+}
+.sticky-top{
+    position: sticky;
+    top:0;
+}
+.sticky-bottom{
+    position: sticky;
+    bottom:0;
+}
+
+
+@import "elements/base";
+@import "pages/base";
+
