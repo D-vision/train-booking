@@ -9,6 +9,8 @@ class Ticket extends Model
 {
     use HasFactory;
 
+    const Cities = ['AAA','BBB','CCC','DDD'];
+
     protected $fillable = [
         'order_id',
         'from',

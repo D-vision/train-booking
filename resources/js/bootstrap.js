@@ -7,16 +7,18 @@ window._ = _;
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-import axios from 'axios';
-window.axios = axios;
+import Axios from 'axios';
+let axiosInstance = Axios;
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axiosInstance.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
 
 if(csrfToken)
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken.content;
+    axiosInstance.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken.content;
 
+import Api from './api'
+window.api = new Api({host:'/api/',axiosInstance})
 
 import Vue from 'vue/dist/vue'
 window.Vue = Vue

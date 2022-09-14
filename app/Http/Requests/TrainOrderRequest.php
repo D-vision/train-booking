@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Ticket;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TrainOrderRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class TrainOrderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,12 @@ class TrainOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "depStationCode"=> ['required',Rule::in(Ticket::Cities)],
+            "arrStationCode"=>['required',Rule::in(Ticket::Cities)],
+            "depDate"=>['required','date','after:today'],
+            "trainNumber"=>['required'],
+            "carNumber"=>['required'],
+            "placeNumber"=>['required'],
         ];
     }
 }

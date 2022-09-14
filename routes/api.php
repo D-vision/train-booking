@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware'=>'auth:sanctum'],function (){
+Route::group(['middleware'=>'auth'],function (){
     Route::get('/user', function (Request $request) {
-        return $request->user();
+        return \App\Http\Resources\UserResource::make($request->user());
     });
 
+    Route::get('tickets',[TicketController::class,'tickets']);
+    Route::get('cities',[TicketController::class,'cities']);
     Route::get('search',[TicketController::class,'search']);
-    Route::get('order',[TicketController::class,'order']);
+    Route::post('order',[TicketController::class,'order']);
 
 });
 
