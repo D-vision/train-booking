@@ -24,7 +24,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
         if (Auth::attempt($request->only(['phone','password']), $request->filled('remember'))) {
-            $this->authenticated($request);
+            return $this->authenticated($request);
         }
 
         $this->failed($request, $request->only(['phone','password']));
@@ -52,7 +52,7 @@ class UserController extends Controller
 //        Redis::set() URL::signedRoute('phone.confirm', ['user' => $user]);
 
         auth()->loginUsingId($user->id);
-        $this->authenticated($request);
+        return $this->authenticated($request);
     }
 
 

@@ -16,9 +16,11 @@ class Ticket extends Model
         'from',
         'to',
         'train',
-        'cart',
+        'car',
+        'car_type',
         'place',
-        'departure_at'
+        'departure_at',
+        'arrival_at',
     ];
 
     protected $casts = [
@@ -28,5 +30,10 @@ class Ticket extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getCarTypeStringAttribute()
+    {
+        return $this->car_type==1?'Плацкарт':'Купе';
     }
 }

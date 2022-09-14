@@ -31,7 +31,10 @@ class TrainOrderRequest extends FormRequest
             "depDate"=>['required','date','after:today'],
             "trainNumber"=>['required'],
             "carNumber"=>['required'],
+            "carType"=>['required',Rule::in([1,2])],
             "placeNumber"=>['required'],
+            "departureDatetime"=>['required'],
+            "arrivalDatetime"=>['required'],
         ];
     }
 }

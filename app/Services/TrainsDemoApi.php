@@ -87,6 +87,7 @@ class TrainsDemoApi
 
     public function search($data)
     {
+        //TODO: use cache
         return $this->post('search-trains',$data);
     }
 
@@ -97,16 +98,24 @@ class TrainsDemoApi
             "lastName"=> $user->lastName
         ];
 
-        $ticket = $this->post('issue-ticket',$data);
+        $ticket = $this->post('issue-ticket',
+            collect($data)->except([
+                'carType',
+                'departureDatetime',
+                'arrivalDatetime'
+            ])
+        );
 
         return $user->tickets()->create([
             'order_id'=>$ticket["orderId"],
             'from'=>$data['depStationCode'],
             'to'=>$data['arrStationCode'],
             'train'=>$data['trainNumber'],
-            'cart'=>$data['carNumber'],
+            'car'=>$data['carNumber'],
+            'car_type'=>$data['carType'],
             'place'=>$data['placeNumber'],
-            'departure_at'=>$data['depDate']
+            'departure_at'=>$data['departureDatetime'],
+            'arrival_at'=>$data['arrivalDatetime']
         ]);
     }
 }

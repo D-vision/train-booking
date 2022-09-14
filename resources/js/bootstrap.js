@@ -12,7 +12,7 @@ let axiosInstance = Axios;
 
 axiosInstance.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
+window.csrfToken = document.head.querySelector('meta[name="csrf-token"]');
 
 if(csrfToken)
     axiosInstance.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken.content;

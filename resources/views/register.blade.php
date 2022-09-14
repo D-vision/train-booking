@@ -50,8 +50,8 @@
                     </div>
 
                     <div class="input-composer embedded">
-                        <button type="submit" class="btn full primary">Войти</button>
-                        <a href="{{route('register')}}" class="btn tertiary dark">Регистрация</a>
+                        <button type="submit" class="btn full primary">Зарегистрировать</button>
+                        <a href="{{route('login')}}" class="btn tertiary dark">Войти в аккаунт</a>
                     </div>
 
                 </form>

@@ -2,9 +2,13 @@
     <div>
         <h1 v-if="user">
             <span>{{user.firstName}} {{user.lastName}}</span>
-            <div class="btn dark tertiary sticky-right">
-                <i class="fas fa-sign-out-alt"></i>
-            </div>
+            <form action="/logout" method="post">
+                <input type="hidden" name="_token" :value="csrf">
+                <button class="btn dark tertiary sticky-right">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </form>
+
         </h1>
         <hr>
 
@@ -48,7 +52,7 @@
                             <div class="places">
                                 <div class="btn xs dark outline"
                                      v-for="place in car.places"
-                                     @click="order(train.number,car.number,place)"
+                                     @click="order(train,car,place)"
                                 >{{place}}</div>
                             </div>
                         </div>
@@ -66,17 +70,23 @@
                     <div class="title">
                         <i class="fas fa-train"></i>
                         <div class="number">{{ticket.train}}</div>
-                        <span>{{ticket.departure_at | date(false)}}</span>
+                        <span>{{ticket.departure_at | date}}</span>
                     </div>
                     <div class="info">
                         <div class="attr">
-                            <span>Отправление:</span><b>{{ticket.from}}</b>
+                            <span>Отправление:</span>
+                            <b>{{ticket.from}}</b>
+                            <i>({{ticket.departure_at | time}})</i>
                         </div>
                         <div class="attr">
-                            <span>Прибытие:</span><b>{{ticket.to}}</b>
+                            <span>Прибытие:</span>
+                            <b>{{ticket.to}}</b>
+                            <i>({{ticket.arrival_at | time}})</i>
                         </div>
                         <div class="attr">
-                            <span>Вагон</span><b>{{ticket.cart}}</b>
+                            <span>Вагон</span>
+                            <b>{{ticket.car}}</b>
+                            <i>({{ticket.carType==1?'Плацкарт':'Купе'}})</i>
                         </div>
                         <div class="attr">
                             <span>Место</span><b>{{ticket.place}}</b>
@@ -107,7 +117,8 @@ export default {
             from:null,
             to:null,
             date:null,
-            page:1
+            page:1,
+            csrf:csrfToken?.content
         }
     },
     mounted() {
@@ -142,13 +153,17 @@ export default {
                 "depStationCode": this.from,
                 "arrStationCode": this.to,
                 "depDate": this.date,
-                "trainNumber": train,
-                "carNumber": car,
+                "trainNumber": train.number,
+                "carNumber": car.number,
+                "carType": car.type,
                 "placeNumber": place,
+                "departureDatetime":train.departureDatetime,
+                "arrivalDatetime":train.arrivalDatetime
             })
                 .then(data=>{
                     this.getTickets()
                     this.errors = null
+                    this.trains= null
                     // this.trains = null
                 })
                 .catch(data=>this.errors = data)
@@ -170,6 +185,17 @@ export default {
             let minute = dt.getMinutes().toString().padStart(2, '0')
 
             return `${year}-${month}-${date}` + (onlydate ? '' : ` ${hour}:${minute}`)
+        },
+        time: function (timestamp) {
+            let dt = new Date(Date.parse((new Date(timestamp)).toString()))
+            let year = dt.getFullYear()
+            let month = dt.getMonth() + 1
+            month = month.toString().padStart(2, '0')
+            let date = dt.getDate().toString().padStart(2, '0')
+            let hour = dt.getHours().toString().padStart(2, '0')
+            let minute = dt.getMinutes().toString().padStart(2, '0')
+
+            return `${hour}:${minute}`
         },
     }
 }

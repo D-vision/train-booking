@@ -20,9 +20,11 @@ return new class extends Migration
             $table->string('from');
             $table->string('to');
             $table->string('train');
-            $table->string('cart');
+            $table->string('car');
+            $table->string('car_type');
             $table->string('place');
-            $table->timestamp('departure_at');
+            $table->timestamp('departure_at')->nullable();
+            $table->timestamp('arrival_at')->nullable();
             $table->timestamps();
         });
     }
